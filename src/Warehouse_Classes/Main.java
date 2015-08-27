@@ -1,5 +1,9 @@
 package Warehouse_Classes;
 
+import javax.swing.JFrame;
+
+import Warehouse_Classes.unused_classes.GuiPanel;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -11,6 +15,10 @@ public class Main {
 		//OrderLineManager operatorTest = new OrderLineManager();
 		
 		//InventoryManager productManipulator = new InventoryManager();
+		JFrame mainFrame = new JFrame("WINDOW");
+		Login warehouseLoginPanel = new Login(mainFrame);
+		mainFrame.setSize(800, 800);
+		mainFrame.setVisible(true);
 		
 		
 		
@@ -24,14 +32,10 @@ public class Main {
 		
 		
 		
-		//---------------Non-Functioning methods 
 		
-		// Login warehouseLogin = new Login();
-		
-		// AccountCreationGUI warehouseAccountCreation = new AccountCreationGUI();
-		
-		
-		
+		//---------------Non-Functioning methods 	
+		//AccountCreationGUI warehouseAccountCreation = new AccountCreationGUI();
+
 		//InventoryGUI inventoryWindow = new InventoryGUI();
 	}
 }

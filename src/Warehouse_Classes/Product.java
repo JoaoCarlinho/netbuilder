@@ -7,9 +7,6 @@ public class Product {
 
 	private int productID;
 	private String productName;
-	private int supplierID;
-	private double wholesalePrice;
-  	private double retailPrice;
 	private int shelvedQuantity;
   	private int reservedQuantity;
   	private int porousAvailable;
@@ -17,118 +14,90 @@ public class Product {
   	private int nonPorousAvailable;
   	private int porousReserved;
   	private int nonPorousReserved;
-	
-	public Product(int productID, String productName, int supplierID, double wholesalePrice, double retailPrice, int shelvedQuantity, int reservedQuantity, int porousAvailable, int minPorous, 
-					int nonPorousAvailable, int porousReserved, int nonPorousReserved) {
+  	
+  	public Product(){};
+	public Product(int productID, String productName,  int shelvedQuantity, int reservedQuantity,  int porousAvailable, int nonPorousAvailable) {
 		super();
+		
 		this.productID = productID;
 		this.productName = productName;
-		this.supplierID = supplierID;
-		this.wholesalePrice = wholesalePrice;
-		this.retailPrice = retailPrice;
      	this.shelvedQuantity = shelvedQuantity;
      	this.reservedQuantity = reservedQuantity;
      	this.porousAvailable = porousAvailable;
-     	this.minPorous = minPorous;
       	this.nonPorousAvailable = nonPorousAvailable;
-      	this.porousReserved = porousReserved;
-      	this.nonPorousReserved = nonPorousReserved;
+      	
 	}
 
-	public int getproductID() {
+	public int getProductID() {
 		return productID;
 	}
   
-  public void setproductID(int productID) {
+  public void setProductID(int productID) {
 		this.productID = productID;
 	}
   
-  	public String getproductName() {
+  	public String getProductName() {
 		return productName;
 	}
   
-  	public void setproductName(String productName) {
+  	public void setProductName(String productName) {
 		this.productName = productName;
 	}
   
-  	public int getsupplierID() {
-		return supplierID;
-	}
-  
-  	public void setsupplierID(int supplierID) {
-		this.supplierID = supplierID;
-	}
-  
-  	public double getwholesalePrice() {
-		return wholesalePrice;
-	}
-  
-  	public void setwholesalePrice(double wholesalePrice) {
-		this.wholesalePrice = wholesalePrice;
-	}
-  
-  	public double getretailPrice() {
-		return retailPrice;
-	}
-  
-  	public void setretailPrice(double retailPrice) {
-		this.retailPrice = retailPrice;
-	}
-  
-  	public int getshelvedQuantity() {
+  	public int getShelvedQuantity() {
 		return shelvedQuantity;
    }
 	
      
-   public void setshelvedQuantity(int shelvedQuantity) {
+   public void setShelvedQuantity(int shelvedQuantity) {
 		this.shelvedQuantity = shelvedQuantity;
 	}
   
-  	public int getreservedQuantity() {
+  	public int getReservedQuantity() {
 		return reservedQuantity;
 	}
      
-   public void setreservedQuantity(int reservedQuantity) {
+   public void setReservedQuantity(int reservedQuantity) {
 		this.reservedQuantity = reservedQuantity;
 	}
   
-  	public int getporousAvailable() {
+  	public int getPorousAvailable() {
 		return porousAvailable;
 	}
      
-   public void setporousAvailable(int porousAvailable) {
+   public void setPorousAvailable(int porousAvailable) {
 		this.porousAvailable = porousAvailable;
 	}
 
-   public int getminPorous() {
+   public int getMinPorous() {
 	   return minPorous;
    }
    
-   public void setminPorous(int minPorous) {
+   public void setMinPorous(int minPorous) {
 	   this.minPorous = minPorous;
    }
    
-   public int getnonPorousAvailable() {
+   public int getNonPorousAvailable() {
 	   return nonPorousAvailable;
    }
    
-   public void nonPorousAvailable(int nonPorousAvailable) {
+   public void setNonPorousAvailable(int nonPorousAvailable) {
 	   this.nonPorousAvailable = nonPorousAvailable;
    }
  
-   public int getnPorousReserved() {
+   public int getPorousReserved() {
 	   return porousReserved;
    }
    
-   public void porousReserved(int porousReserved) {
+   public void setPorousReserved(int porousReserved) {
 	   this.porousReserved = porousReserved;
    }
    
-   public int nonPorousReserved() {
+   public int getNonPorousReserved() {
 	   return nonPorousReserved;
    }
    
-   public void nonPorousReserved(int nonPorousReserved) {
+   public void setNonPorousReserved(int nonPorousReserved) {
 	   this.nonPorousReserved = nonPorousReserved;
    }
  	
@@ -140,9 +109,9 @@ public class Product {
 	@Override
 	public String toString() {
 		return String
-				.format("Product [productID=%s, productName=%s, supplierID=%s, wholesalePrice=%s, retailPrice=%s, shelvedQuantity=%s,reservedQuantity=%s, porousAvailable=%s, minPorous=%s, nonPorousAvailable=%s, porousReserved=%s, nonPorousReserved=%s ]",
-						productID, productName, supplierID, wholesalePrice, retailPrice, shelvedQuantity, reservedQuantity, porousAvailable, minPorous, nonPorousAvailable, porousReserved, nonPorousReserved);
-	}
+				.format("Product [productID=%s, productName=%s, shelvedQuantity=%s,reservedQuantity=%s, porousAvailable=%s, minPorous=%s, nonPorousAvailable=%s, porousReserved=%s, nonPorousReserved=%s ]",
+						productID, productName, shelvedQuantity, reservedQuantity, porousAvailable, minPorous, nonPorousAvailable, porousReserved, nonPorousReserved);
+	}		
 	
 	
 		

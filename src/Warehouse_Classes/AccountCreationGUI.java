@@ -2,50 +2,70 @@ package Warehouse_Classes;
 
 import java.awt.event.*;
 import javax.swing.*;
+import java.awt.GridLayout;
 
-//This class was used to practice creating GUI******************************************************************
 
-public class AccountCreationGUI {
-				
+public class AccountCreationGUI extends BasePanel {
 	
-	JFrame f = new JFrame("Employee Account Creation");
-	JLabel l = new JLabel("Employee ID:");
-	JLabel l0 = new JLabel("First Name:");
-	JLabel l1 = new JLabel("Last Name:");
-	JLabel l2= new JLabel("Password:");
-	JLabel l3= new JLabel("repeat Password:");
-	JTextField t = new JTextField(10);
-	JTextField t0 = new JTextField(10);
-	JTextField t1 = new JTextField(10);
-	JTextField t2= new JTextField(10);
-	JTextField t3= new JTextField(10);
-	JButton b = new JButton("Submit");
-
-
-	public AccountCreationGUI(){
-		frame();	
+	/**********************************************************************Constructor*****************************************************/
+	
+	JFrame frame;
+	JLabel l;
+	JLabel l0;
+	JLabel l1;
+	JLabel l2;
+	JLabel l3;
+	JTextField t;
+	JTextField t0;;
+	JTextField t1;
+	JTextField t2;
+	JTextField t3;
+	JButton b;
+	
+	public AccountCreationGUI(JFrame frame){
+		super(frame);
+		setVisible(true);
+		 this.setLayout(new GridLayout(6,2));
+		
 	}
 	
-	public void frame(){
-		f.setSize(600,400);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
+	@Override
+	protected void prepareGui() {
+		// TODO Auto-generated method stub
 		
-		JPanel p = new JPanel();
-		p.add(l);
-		p.add(t);
-		p.add(l0);
-		p.add(t0);
-		p.add(l1);
-		p.add(t1);
-		p.add(l2);
-		p.add(t2);
-		p.add(l3);
-		p.add(t3);
-		p.add(b);
+		l = new JLabel("Employee ID:");
+		l0 = new JLabel("First Name:");
+		l1 = new JLabel("Last Name:");
+		l2= new JLabel("Password:");
+		l3= new JLabel("repeat Password:");
+		t = new JTextField(10);
+		t0 = new JTextField(10);
+		t1 = new JTextField(10);
+		t2= new JTextField(10);
+		t3= new JTextField(10);
 		
-		f.add(p);
+		b = new JButton("Submit");
+		
+		add(l);
+		add(t);
+		add(l0);
+		add(t0);
+		add(l1);
+		add(t1);
+		add(l2);
+		add(t2);
+		add(l3);
+		add(t3);
+		add(b);	
 	}
+
+	@Override
+	protected void prepareEvents() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
 
 
 }
