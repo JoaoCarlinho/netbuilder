@@ -1,24 +1,25 @@
 package Warehouse_Classes;
 
-import javax.swing.JFrame;
+import java.sql.SQLException;
+import java.util.Stack;
 
-import Warehouse_Classes.unused_classes.GuiPanel;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Main {
+	private static Stack<JPanel> stack = new Stack<JPanel>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+	
 
-		
-
-		//----------------Functioning methods without GUI*********************************************************
-		
-		//OrderLineManager operatorTest = new OrderLineManager();
-		
-		//InventoryManager productManipulator = new InventoryManager();
-		JFrame mainFrame = new JFrame("WINDOW");
+/**********************************************************************Entry Point for the Warehouse Management App*****************************************************/		
+		JFrame mainFrame = new JFrame("WINDOW"); 
+		GUIStack.setJFrame(mainFrame);
 		Login warehouseLoginPanel = new Login(mainFrame);
 		mainFrame.setSize(800, 800);
 		mainFrame.setVisible(true);
+		GUIStack.openWindow(warehouseLoginPanel);
 		
 		
 		
@@ -33,9 +34,8 @@ public class Main {
 		
 		
 		
-		//---------------Non-Functioning methods 	
-		//AccountCreationGUI warehouseAccountCreation = new AccountCreationGUI();
-
-		//InventoryGUI inventoryWindow = new InventoryGUI();
-	}
+		/************************************************************Testing Functionality of methods**********************************************************/
+		//TravelingWarehouseOperator test = new TravelingWarehouseOperator(1);
+	}	
+		
 }

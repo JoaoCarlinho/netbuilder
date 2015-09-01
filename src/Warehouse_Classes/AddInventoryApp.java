@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
+	/**********************************************************************Class to create GUI for creating customer order lines*****************************/
 
 public class AddInventoryApp extends BasePanel {
 
@@ -32,7 +33,7 @@ public class AddInventoryApp extends BasePanel {
 	private JTextField porousAvailableTextField;
 	private JTextField nonPorousAvailableTextField;
 	
-	
+	/***********************Initialize text fields above and correspondin labels below****************************/	
 	private JLabel lblProductID;
 	private JLabel lblProductName;
 	private JLabel lblshelvedQuantity;
@@ -41,7 +42,8 @@ public class AddInventoryApp extends BasePanel {
 	private JLabel lblPorousAvailablelblPorousAvailable;
 	private JLabel lblNonPorousAvailable;
 	
-	
+	  /**************************Initialize buttons******************************************************************/
+
 	private JPanel buttonPane;
 	private JButton okButton;
 	private JButton cancelButton;
@@ -51,7 +53,9 @@ public class AddInventoryApp extends BasePanel {
 	
 	private Product previousProduct = null;
 	private boolean updateMode = false;
-
+  	
+  
+  /**********************************Constructor--implement methods from superclass(basepanel)******************************************/
 	public AddInventoryApp(ProductSearchApp theProductSearchApp, InventoryDAO theInventoryDAO, Product thePreviousProduct, boolean theUpdateMode, JFrame frame) {
 		super(frame);
 		setVisible(true);
@@ -70,7 +74,7 @@ public class AddInventoryApp extends BasePanel {
 	
 	
 	
-/***********************************************************Create GUI Objects****************************************************************************************************/
+    	/************************************Initialize gui objects and add them to panel ******************************************/
 		@Override
 		protected void prepareGui() {
 				setLayout(new BorderLayout());
@@ -122,18 +126,19 @@ public class AddInventoryApp extends BasePanel {
 					cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);	
 		}
-		/*************************************************************Attach events to GUI objects*****************************************************************************************************/
+  			/*******************************Add actions to buttons for calling method for adding customer order lines***************************************/
 		@Override
 		protected void prepareEvents() {
 			okButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					saveProduct();
+					GUIStack.goBack();
 				}
 			});
 		
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
+					GUIStack.goBack();
 					
 				}
 			});
@@ -172,7 +177,7 @@ public class AddInventoryApp extends BasePanel {
 
 		Product tempProduct = new Product(productID, productName, shelvedQuantity, reservedQuantity, porousAvailable, nonPorousAvailable);
 		
-		
+    			/*******************************run this for updating***************************************/
 		
 		if (updateMode){
 			System.out.println("updating Product");

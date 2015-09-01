@@ -4,11 +4,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.GridLayout;
 
+	/**********************************************************************Class to create GUI for account creation*****************************/
 
 public class AccountCreationGUI extends BasePanel {
 	
-	/**********************************************************************Constructor*****************************************************/
-	
+	/**********************************************************************Variable declarations*****************************/
 	JFrame frame;
 	JLabel l;
 	JLabel l0;
@@ -21,17 +21,24 @@ public class AccountCreationGUI extends BasePanel {
 	JTextField t2;
 	JTextField t3;
 	JButton b;
+	JButton b0;
 	
+  	/**********************************Constructor--implement methods from superclass(basepanel)******************************************/
+
+  
 	public AccountCreationGUI(JFrame frame){
 		super(frame);
 		setVisible(true);
 		 this.setLayout(new GridLayout(6,2));
 		
 	}
+  
+  
+  	/************************************Initialize gui objects and add them to panel ******************************************/
+
 	
 	@Override
 	protected void prepareGui() {
-		// TODO Auto-generated method stub
 		
 		l = new JLabel("Employee ID:");
 		l0 = new JLabel("First Name:");
@@ -45,6 +52,7 @@ public class AccountCreationGUI extends BasePanel {
 		t3= new JTextField(10);
 		
 		b = new JButton("Submit");
+		b0 = new JButton("Cancel");
 		
 		add(l);
 		add(t);
@@ -57,12 +65,14 @@ public class AccountCreationGUI extends BasePanel {
 		add(l3);
 		add(t3);
 		add(b);	
+		add(b0);
 	}
 
 	@Override
 	protected void prepareEvents() {
 		// TODO Auto-generated method stub
-		
+			/*******************************Need to add action for button (b) to call method for adding employees***************************************/
+
 	}
 	
 

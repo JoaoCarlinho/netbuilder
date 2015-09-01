@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+/*********Class to create GUI table structure for to display customer order lines for account creation***********/
 
 class CustomerOrderLineTableModel extends AbstractTableModel {
 
@@ -19,10 +20,13 @@ class CustomerOrderLineTableModel extends AbstractTableModel {
  
   	private int orderStatusCode;
   	
+/******************************Decide names for customer order lines GUI table columns **************************/
 
 	public static String[] columnNames = { "customerOrderID",  "productID", "quantity", "productStatusCode", "porousCount", "handlerID", "orderStatusCode" };
 	private List<CustomerOrderLine> customerOrderLines;
-
+  
+  
+/******************************Decide names for customer order lines GUI table columns **************************/
 	public CustomerOrderLineTableModel(List<CustomerOrderLine> theCustomerOrderLines) {
 		customerOrderLines = theCustomerOrderLines;
 	}
@@ -41,6 +45,7 @@ class CustomerOrderLineTableModel extends AbstractTableModel {
 	public String getColumnName(int col) {
 		return columnNames[col];
 	}
+/**********************put values into customer order lines GUI table columns by column *****************/
 
 	@Override
 	public Object getValueAt(int row, int col) {

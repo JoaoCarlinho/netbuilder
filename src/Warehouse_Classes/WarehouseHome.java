@@ -38,6 +38,7 @@ public class WarehouseHome extends BasePanel{
 	JLabel operator;
 	JButton b;
 	JButton b0;
+	JButton back;
 	
 	
 	public WarehouseHome(String user, JFrame frame){
@@ -55,10 +56,12 @@ public class WarehouseHome extends BasePanel{
 		operator = new JLabel();
 		b = new 	JButton("Inventory Manager");
 		b0 = new 	JButton("Orderline Manager");
+		back = new JButton("Back");
 		
 		add(operator);
 		add(b);
 		add(b0);
+		add(back);
 
 	}
 	
@@ -66,8 +69,8 @@ public class WarehouseHome extends BasePanel{
 	protected void prepareEvents() {
 		b0.addActionListener(new ActionListener(){
 			public void actionPerformed (ActionEvent c){
-				closeWindow();
 				CustomerOrderLineList orderLineList = new CustomerOrderLineList(user, mainFrame);
+				GUIStack.openWindow(orderLineList);
 			}
 		
 		});
@@ -75,8 +78,16 @@ public class WarehouseHome extends BasePanel{
 		b.addActionListener(new ActionListener(){
 			public void actionPerformed (ActionEvent e)
 			{
-				closeWindow();
 				ProductSearchApp productManager = new ProductSearchApp(mainFrame, user);
+				GUIStack.openWindow(productManager);	
+			}
+		
+		});
+		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIStack.goBack();
 				
 			}
 		
@@ -89,23 +100,24 @@ public class WarehouseHome extends BasePanel{
 		
 		Connection conn0 =null;
 		Statement stmt0 = null;
-		String username = null;
+		String firstName = null;
+		String lastName = null;
 		
 		
 		try
 		{	Class.forName( JDBC_DRIVER);
-		  	System.out.println("Connecting to database...");
-		  	conn0 = DriverManager.getConnection(DB_URL, USER, PASS);
-		  	
-		  	stmt0 = conn0.createStatement();
-		  	System.out.println(user);
-			String sql = "select lastName from warehouse_operator where employeeID = '" + user + "'";
-			ResultSet rs = stmt0.executeQuery(sql);
 			System.out.println("assigning username");
+		  	conn0 = DriverManager.getConnection(DB_URL, USER, PASS);	  	
+		  	stmt0 = conn0.createStatement();
+			String sql = "select lastName, firstName from warehouse_operator where employeeID = '" + user + "'";
+			ResultSet rs = stmt0.executeQuery(sql);
+			
 			while(rs.next()){
-				username = rs.getString("lastName");
+				firstName = rs.getString("firstName");
+				lastName = rs.getString("lastName");
+				
 			}
-		
+			System.out.println("User for id " + user + " found: " + firstName + " " + lastName);
 		}
 		
 		catch (SQLException sqle) {
@@ -135,7 +147,7 @@ public class WarehouseHome extends BasePanel{
 			}
 		
 		
-		String welcomeString = "Welcome Mr. " + username;
+		String welcomeString = "Welcome " + firstName + " " + lastName+ "!" ;
 		operator.setText(welcomeString);
 	}
 	

@@ -1,10 +1,10 @@
-
 package Warehouse_Classes;
 
-//This is my orderLine class where I set a constructor method for use in GUI*********************************************************************************************************************
+//This is my orderLine class for use in 	q`creation of array lists for populating GUI tables*********************************************************************************************************************
 
 public class CustomerOrderLine {
 
+	/***************************************************************Declare class variables*****************************/
 
 	private int customerOrderID;
 	private int productID;
@@ -14,9 +14,16 @@ public class CustomerOrderLine {
 	private int handlerID;
   	private int orderStatusCode;
   	
+  
+  
+  	/****************************************************Empty constructor for use when creating new products*****************************/
+
   	public CustomerOrderLine() {
 	}
   	
+  
+  	/******************************************************Initialize instance variables in constructor*****************************/
+
 	public CustomerOrderLine( int customerOrderID,  int productID, int quantity, int productStatusCode, int porousCount,int handlerID, int orderStatusCode) {
 		super();
 		this.customerOrderID = customerOrderID;
@@ -28,6 +35,10 @@ public class CustomerOrderLine {
      	this.orderStatusCode = orderStatusCode;
       	
 	}
+  
+  
+  	/*****************************************************Getter and Setter methods*****************************/
+
   
   public int getCustomerOrderID() {
 		return customerOrderID;
@@ -87,6 +98,8 @@ public class CustomerOrderLine {
    }
  
 
+  
+  
 	
 
 	@Override

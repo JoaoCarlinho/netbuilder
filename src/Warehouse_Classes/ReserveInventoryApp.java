@@ -154,6 +154,7 @@ public class ReserveInventoryApp extends BasePanel {
 			reserveButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					reserveProduct();
+					GUIStack.goBack();
 				}
 			});
 				
@@ -161,13 +162,13 @@ public class ReserveInventoryApp extends BasePanel {
 			pickButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					pickProduct();
+					GUIStack.goBack();
 				}
 			});
 		
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					setVisible(false);
-					
+					GUIStack.goBack();
 				}
 			});
 		}

@@ -4,7 +4,6 @@ package Warehouse_Classes;
 
 public class Product {
 
-
 	private int productID;
 	private String productName;
 	private int shelvedQuantity;
@@ -25,7 +24,6 @@ public class Product {
      	this.reservedQuantity = reservedQuantity;
      	this.porousAvailable = porousAvailable;
       	this.nonPorousAvailable = nonPorousAvailable;
-      	
 	}
 
 	public int getProductID() {
@@ -48,7 +46,6 @@ public class Product {
 		return shelvedQuantity;
    }
 	
-     
    public void setShelvedQuantity(int shelvedQuantity) {
 		this.shelvedQuantity = shelvedQuantity;
 	}
@@ -101,18 +98,11 @@ public class Product {
 	   this.nonPorousReserved = nonPorousReserved;
    }
  	
- 	
-   
-
-	
-
 	@Override
 	public String toString() {
 		return String
 				.format("Product [productID=%s, productName=%s, shelvedQuantity=%s,reservedQuantity=%s, porousAvailable=%s, minPorous=%s, nonPorousAvailable=%s, porousReserved=%s, nonPorousReserved=%s ]",
 						productID, productName, shelvedQuantity, reservedQuantity, porousAvailable, minPorous, nonPorousAvailable, porousReserved, nonPorousReserved);
 	}		
-	
-	
 		
 }

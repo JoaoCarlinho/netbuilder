@@ -46,6 +46,8 @@ public class CustomerOrderLineDAO {
 		finally {
 			conn.close();
 		}
+		TravelingWarehouseOperator test = new TravelingWarehouseOperator(theCustomerOrderLine.getCustomerOrderID());
+		
 		
 	}
 	

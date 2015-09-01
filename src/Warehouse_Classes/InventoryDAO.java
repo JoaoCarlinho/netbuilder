@@ -4,11 +4,7 @@ import java.util.*;
 import java.sql.*;
 import java.io.*;
 
-/**
- * 
- * @author www.luv2code.com
- *
- */
+
 public class InventoryDAO {
 	
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -16,7 +12,6 @@ public class InventoryDAO {
 	static final String USER = "root";
 	static final String PASS = "netbuilder";
 	ResultSet rs;
-
 	private Connection conn;
 	
 	public InventoryDAO() throws Exception {
@@ -217,7 +212,7 @@ public class InventoryDAO {
 		try {
 			myStmt = conn.createStatement();
 			myRs = myStmt.executeQuery("SELECT * FROM INVENTORY");
-			
+	
 			while (myRs.next()) {
 				Product tempProduct = convertRowToProduct(myRs);
 				list.add(tempProduct);

@@ -6,6 +6,7 @@ import Warehouse_Classes.BasePanel;
 import java.awt.event.*;
 import java.sql.*;
 
+/**************Class to display login pages, access database and authenticate user info****************/
 
 public class Login extends BasePanel{
 	 
@@ -42,24 +43,24 @@ public class Login extends BasePanel{
 		  t = new 	JTextField(10);
 		  t1= new 	JTextField(10);
 		  b = new 	JButton("Login");
-		  b0 = new 	JButton("New User");
+		  //b0 = new 	JButton("New User");
 
 		 add(l);
 		 add(t);
 		 add(l1);
 		 add(t1);
 		 add(b);
-		 add(b0);
+		 //add(b0);
 		}
 		
 		protected void prepareEvents() {
 			// Add all listeners and action commands here
-			b0.addActionListener(new ActionListener(){
-				public void actionPerformed (ActionEvent c){
-					closeWindow();
-					AccountCreationGUI createAccount = new AccountCreationGUI(mainFrame);
-				}
-			});
+			//b0.addActionListener(new ActionListener(){
+			//	public void actionPerformed (ActionEvent c){
+			//		closeWindow();
+			//		AccountCreationGUI createAccount = new AccountCreationGUI(mainFrame);
+			//	}
+			//});
 			
 			
 			
@@ -73,7 +74,7 @@ public class Login extends BasePanel{
 					try
 					{
 						  Class.forName( JDBC_DRIVER);
-						  System.out.println("Connecting to database...");
+						  System.out.println("Validating User Info");
 						  conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 					String user = t.getText().trim();
@@ -83,7 +84,9 @@ public class Login extends BasePanel{
 					String sql = "select employeeID, authenticationCode from warehouse_operator where employeeID = '" + user + "'and authenticationCode = '" + pass + "'";
 					ResultSet rs = stmt.executeQuery(sql);
 					rs = stmt.executeQuery(sql);
-	
+
+                 
+/*******************************************authenticate user info*********************************************/
 					int count = 0;
 						
 						while (rs.next()) {
@@ -95,9 +98,8 @@ public class Login extends BasePanel{
 						if (count ==1)
 						{
 							JOptionPane.showMessageDialog(null,"User found, Access Granted!");
-							closeWindow();
-							System.out.println(user);
 							WarehouseHome mainMenu = new WarehouseHome(user, mainFrame);
+							GUIStack.openWindow(mainMenu);
 						}
 						
 						else if(count > 1)
@@ -138,7 +140,7 @@ public class Login extends BasePanel{
 						    	se.printStackTrace();
 						   	}
 						}
-						  System.out.println("Goodbye!");
+						  System.out.println("User Authentication Complete");
 				}
 					
 		});

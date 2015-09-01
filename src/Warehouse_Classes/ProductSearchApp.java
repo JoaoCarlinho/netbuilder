@@ -1,6 +1,6 @@
 package Warehouse_Classes;
 
-import Warehouse_Classes.Product;
+ import Warehouse_Classes.Product;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -35,6 +35,7 @@ public class ProductSearchApp extends BasePanel {
 	private JButton btnAddProduct;
 	private JButton btnUpdateProduct;
 	private JButton btnReserveProduct;
+	private JButton back;
 	private JLabel lblEnterProductName;
 	
 	
@@ -70,6 +71,7 @@ public class ProductSearchApp extends BasePanel {
 		btnAddProduct = new JButton("Add Product");
 		btnUpdateProduct = new JButton("Update Product");
 		btnReserveProduct = new JButton("Reserve Product");
+		back = new JButton("Back");
 		
 		
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
@@ -85,6 +87,7 @@ public class ProductSearchApp extends BasePanel {
 		panel1.add(btnAddProduct);
 		panel1.add(btnUpdateProduct);
 		panel1.add(btnReserveProduct);
+		panel1.add(back);
 		add(scrollPane, BorderLayout.CENTER);
 		add(panel1, BorderLayout.SOUTH);
 		scrollPane.setViewportView(table);
@@ -142,14 +145,8 @@ public class ProductSearchApp extends BasePanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				closeWindow();
 				AddInventoryApp dialog = new AddInventoryApp(ProductSearchApp.this, inventoryDAO, null, false, mainFrame);
-				//EmployeeDialog dialog = new EmployeeDialog(EmployeeSearchApp.this, employeeDAO, 
-														//	tempEmployee, true);
-
-				// show dialog
-				dialog.setVisible(true);
-				
+				GUIStack.openWindow(dialog);
 			}
 		});
 		
@@ -179,14 +176,10 @@ public class ProductSearchApp extends BasePanel {
 				for(int i = 0; i < ProductTableModel.columnNames.length;i++){
 				temp[i] = table.getValueAt(row, i);
 				System.out.println(temp[i]);
-				}
-				
-				
+				}	
 				Product tempProduct = new Product( ((int)temp[0]), ((String)temp[1]) , ((int)temp[2]) , ((int)temp[3]) , ((int)temp[4]), ((int)temp[5]));
-				
-				closeWindow();
 				ReserveInventoryApp dialog = new ReserveInventoryApp(ProductSearchApp.this, inventoryDAO, tempProduct, mainFrame);
-		
+				GUIStack.openWindow(dialog);
 				
 			}
 		});
@@ -219,10 +212,8 @@ public class ProductSearchApp extends BasePanel {
 				
 				
 				System.out.println(table.getValueAt(row, ProductTableModel.OBJECT_COL).getClass());
-				// create dialog
-				closeWindow();
 				AddInventoryApp dialog = new AddInventoryApp(ProductSearchApp.this, inventoryDAO, tempProduct, true, mainFrame);
-
+				GUIStack.openWindow(dialog);
 				
 			}
 		});
@@ -230,10 +221,17 @@ public class ProductSearchApp extends BasePanel {
 
 		
 		
-		/************************************************************Action Description for Add products button************************************************************************************************/			
+		/************************************************************Action Description for Add back button************************************************************************************************/			
 		
 		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIStack.goBack();
+				
+			}
 		
+		});
 		
 		
 	}

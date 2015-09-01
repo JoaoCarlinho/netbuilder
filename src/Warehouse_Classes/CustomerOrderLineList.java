@@ -32,6 +32,7 @@ public class CustomerOrderLineList extends BasePanel {
 	private JPanel panel1;
 	private JButton btnAddProduct;
 	private JButton btnUpdateProduct;
+	private JButton back;
 	String user;
 	
 	/*************************************************************************************************Constructor****************************************************/
@@ -62,6 +63,7 @@ public class CustomerOrderLineList extends BasePanel {
 		scrollPane = new JScrollPane(table);
 		panel1 = new JPanel();
 		btnUpdateCustomerOrderLine = new JButton("Update Order Status");
+		back = new JButton("Back");
 		
 		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
 		flowLayout.setAlignment(FlowLayout.LEFT);
@@ -76,6 +78,7 @@ public class CustomerOrderLineList extends BasePanel {
 		
 		panel1.add(btnUpdateCustomerOrderLine);
 		panel1.add(btnAddCustomerOrderLine);
+		panel1.add(back);
 	
 		
 		
@@ -111,6 +114,7 @@ public class CustomerOrderLineList extends BasePanel {
 					
 					// create the model and update the "table"
 					CustomerOrderLineTableModel model = new CustomerOrderLineTableModel(customerOrderLines);
+					
 					
 					table.setModel(model);
 					
@@ -155,12 +159,8 @@ public class CustomerOrderLineList extends BasePanel {
 				
 				System.out.println(table.getValueAt(row, ProductTableModel.OBJECT_COL).getClass());
 				// create dialog
-				closeWindow();
 				AddCustomerOrderLineApp dialog = new AddCustomerOrderLineApp(CustomerOrderLineList.this, customerOrderLineDAO, tempCustomerOrderLine, true, mainFrame);
-
-				
-				// show dialog
-				dialog.setVisible(true);
+				GUIStack.openWindow(dialog);
 				
 			}
 		});
@@ -173,12 +173,21 @@ public class CustomerOrderLineList extends BasePanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {	
 				// create dialog
-				closeWindow();
+		
 				AddCustomerOrderLineApp dialog = new AddCustomerOrderLineApp(CustomerOrderLineList.this, customerOrderLineDAO, mainFrame);
-				
+				GUIStack.openWindow(dialog);
+
 			}
 		});
 		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent e)
+			{
+				GUIStack.goBack();
+				
+			}
+		
+		});
 	}
 		
 

@@ -20,6 +20,9 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+	/**********************************************************************Class to create GUI for creating customer order lines*****************************/
+
 public class AddCustomerOrderLineApp extends BasePanel {
 
 	private JTextField orderIDTextField;
@@ -29,7 +32,7 @@ public class AddCustomerOrderLineApp extends BasePanel {
 	private JTextField porousCountTextField;
 	private JTextField handlerIDTextField;
 	private JTextField orderStatusCodeTextField;
-	
+	/***********************Initialize text fields above and correspondin labels below****************************/	
 	private JLabel lblCustomerOrderLineID; 
 	private JLabel lblQuantityLabel;
 	private JLabel lblproductID;
@@ -38,6 +41,8 @@ public class AddCustomerOrderLineApp extends BasePanel {
 	private JLabel lblHandlerID;
 	private JLabel lblOrderStatusCode;
 	
+  
+  /**************************Initialize buttons******************************************************************/
 	private JPanel buttonPane;
 	private JButton okButton;
 	private JButton cancelButton;
@@ -63,7 +68,8 @@ public class AddCustomerOrderLineApp extends BasePanel {
 		}
 	}
 	
-	
+  	/**********************************Constructor--implement methods from superclass(basepanel)******************************************/
+
 	public AddCustomerOrderLineApp(CustomerOrderLineList theCustomerOrderLineList, CustomerOrderLineDAO theCustomerOrderLineDAO, JFrame frame){
 		super(frame);
 		setVisible(true);
@@ -72,6 +78,9 @@ public class AddCustomerOrderLineApp extends BasePanel {
 	}
 	
 	
+    	/************************************Initialize gui objects and add them to panel ******************************************/
+
+  
 	@Override
 	protected void prepareGui(){
 		setLayout(new BorderLayout());
@@ -128,25 +137,30 @@ public class AddCustomerOrderLineApp extends BasePanel {
 		buttonPane.add(cancelButton);
 		
 	}
+  
+  
+  
+  			/*******************************Add actions to buttons for calling method for adding customer order lines***************************************/
+
 	
 	protected void prepareEvents(){
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						saveCustomerOrderLine();
+						GUIStack.goBack();
 					}
 				});
 				
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						setVisible(false);
-						
+						GUIStack.goBack();
 					}
 				});
 				
 				
 	} 
 	
-	
+  			/*******************************Add values to text field from **************************************/
 	private void populateGui(CustomerOrderLine theCustomerOrderLine) {
 
 		orderIDTextField.setText(String.valueOf(theCustomerOrderLine.getCustomerOrderID()));
@@ -158,6 +172,9 @@ public class AddCustomerOrderLineApp extends BasePanel {
 		orderStatusCodeTextField.setText(String.valueOf(theCustomerOrderLine.getOrderStatusCode()));		
 	}
 			
+  
+    			/*******************************Method for preparing information to send to DAO for saving customer order lines***************************************/
+
 		
 	protected void saveCustomerOrderLine() {
 
@@ -182,7 +199,7 @@ public class AddCustomerOrderLineApp extends BasePanel {
 
 		CustomerOrderLine tempCustomerOrderLine = new CustomerOrderLine(customerOrderID, productID, quantity, productStatusCode, porousCount, handlerID, orderStatusCode);
 		
-		
+    			/*******************************run this for updating***************************************/
 		
 		if (updateMode){
 			tempCustomerOrderLine = previousCustomerOrderLine;
@@ -195,6 +212,10 @@ public class AddCustomerOrderLineApp extends BasePanel {
 			tempCustomerOrderLine.setOrderStatusCode(orderStatusCode);
 			
 		}
+     
+     
+         			/*******************************used different DAO method based on choice of updating or adding inventory***************************************/
+
 		try {
 			if (updateMode)
 			{
